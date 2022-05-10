@@ -16,7 +16,6 @@ class Movie(Base):
     __tablename__ = 'movie'
     id = Column(Integer, primary_key=True)
     title = Column(Text, nullable=False)
-    genres = Column(Text, nullable=False)
 
 
 class Rating(Base):

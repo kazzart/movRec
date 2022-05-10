@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: rgb(13, 17, 23);
+  color: rgb(201, 209, 217);
+  font-size: 14px;
+  line-height: 21px;
+  font-family: Helvetica, sans-serif;
+}
+
+.gray-button,
+.green-button {
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 5px 16px;
+  font-weight: 500;
+}
+
+.gray-button:hover,
+.green-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.gray-button {
+  background-color: rgb(33, 38, 45);
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  color: rgb(201, 209, 217);
+}
+
+.green-button {
+  background-color: rgb(35, 134, 54);
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  color: rgb(255, 255, 255);
+}
+
+.link {
+  color: rgb(88, 166, 255);
+}
+
+.link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.search-field {
+  border-radius: 6px;
+  box-sizing: border-box;
+  border: 1px solid rgb(48, 54, 61);
+  padding: 5px 12px;
+  font-weight: 400;
+  background-color: rgb(13, 17, 23);
+  color: rgb(255, 255, 255);
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+  color: rgb(201, 209, 217);
+  font-weight: 600;
+}
+
+.h1 {
+  font-size: 32px;
+}
+
+.h2 {
+  font-size: 24px;
+}
+
+.h3 {
+  font-size: 20px;
+}
+
+.h4 {
+  font-size: 16px;
+}

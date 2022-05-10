@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  column-gap: 20px;
+  position: relative;
+  left: -8px;
+  top: -8px;
+  box-sizing: border-box;
+  padding: 32px 16px;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: rgb(22, 27, 34);
+}
+
+.input-wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 98%;
+}
+
+.search-field {
+  width: 30%;
+}
