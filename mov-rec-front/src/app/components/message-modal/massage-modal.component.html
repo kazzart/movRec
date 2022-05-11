@@ -1,0 +1,7 @@
+<div *ngIf="service.visible" class="modal-container">
+  <div class="modal-body content">
+    <div class="h4">{{ service.text }}</div>
+    <button (click)="service.close()" class="green-button">Закрыть</button>
+  </div>
+  <div (click)="service.close()" class="modal-background"></div>
+</div>

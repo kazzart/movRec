@@ -11,9 +11,10 @@ import { AuthComponent } from './components/auth/auth.component';
 import { DataLoaderComponent } from './components/data-loader/data-loader.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { MessageModalComponent } from './components/message-modal/message-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, MainPageComponent, HeaderComponent, AuthComponent, DataLoaderComponent, RatingComponent, SearchInputComponent],
+  declarations: [AppComponent, MainPageComponent, HeaderComponent, AuthComponent, DataLoaderComponent, RatingComponent, SearchInputComponent, MessageModalComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
