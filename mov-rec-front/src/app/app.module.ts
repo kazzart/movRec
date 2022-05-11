@@ -12,9 +12,20 @@ import { DataLoaderComponent } from './components/data-loader/data-loader.compon
 import { RatingComponent } from './components/rating/rating.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { MessageModalComponent } from './components/message-modal/message-modal.component';
+import { DropZoneComponent } from './components/drop-zone/drop-zone.component';
 
 @NgModule({
-  declarations: [AppComponent, MainPageComponent, HeaderComponent, AuthComponent, DataLoaderComponent, RatingComponent, SearchInputComponent, MessageModalComponent],
+  declarations: [
+    AppComponent,
+    MainPageComponent,
+    HeaderComponent,
+    AuthComponent,
+    DataLoaderComponent,
+    RatingComponent,
+    SearchInputComponent,
+    MessageModalComponent,
+    DropZoneComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

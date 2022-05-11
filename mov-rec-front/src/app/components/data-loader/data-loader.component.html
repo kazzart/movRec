@@ -1,18 +1,16 @@
 <div class="content">
   <div class="wrapper">
     <div class="h4">Загрузить фильмы</div>
-    <div class="input-group">
-      <div class="label">Выберите файл</div>
-      <input type="file" />
-    </div>
-    <button class="green-button">Загрузить фильмы</button>
+    <app-drop-zone (fileChanged)="dropMovieFile($event)"></app-drop-zone>
+    <button (click)="uploadMovieFile()" class="green-button">
+      Загрузить фильмы
+    </button>
   </div>
   <div class="wrapper">
     <div class="h4">Загрузить рейтинги</div>
-    <div class="input-group">
-      <div class="label">Выберите файл</div>
-      <input type="file" />
-    </div>
-    <button class="green-button">Загрузить рейтинги</button>
+    <app-drop-zone (fileChanged)="dropRatingFile($event)"></app-drop-zone>
+    <button (click)="uploadRatingFile()" class="green-button">
+      Загрузить рейтинги
+    </button>
   </div>
 </div>
