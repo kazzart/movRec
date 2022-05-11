@@ -1,5 +1,10 @@
+from re import L
 from typing import List
 from pydantic import BaseModel
+
+
+class UserCreate(BaseModel):
+    nickname: str
 
 
 class User(BaseModel):

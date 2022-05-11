@@ -7,6 +7,15 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
+.content {
+  display: flex;
+  column-gap: 20px;
+  background-color: rgb(22, 27, 34);
+  border-radius: 6px;
+  border: 1px solid rgb(33, 38, 45);
+  padding: 8px 16px;
+}
+
 .gray-button,
 .green-button {
   border-radius: 6px;
@@ -42,7 +51,7 @@ body {
   cursor: pointer;
 }
 
-.search-field {
+.regular-input {
   border-radius: 6px;
   box-sizing: border-box;
   border: 1px solid rgb(48, 54, 61);
@@ -50,6 +59,15 @@ body {
   font-weight: 400;
   background-color: rgb(13, 17, 23);
   color: rgb(255, 255, 255);
+}
+
+.label {
+  margin: 0;
+  margin-bottom: 3px;
+  padding: 0;
+  color: rgb(87, 96, 106);
+  font-size: 12px;
+  line-height: 12px;
 }
 
 .h1,

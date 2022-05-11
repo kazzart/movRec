@@ -11,13 +11,6 @@
   background-color: rgb(22, 27, 34);
 }
 
-.input-wrapper {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  width: 98%;
-}
-
-.search-field {
-  width: 30%;
+.h2 {
+  margin-left: 90px;
 }

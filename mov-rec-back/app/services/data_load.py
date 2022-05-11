@@ -1,6 +1,7 @@
 import io
 import pandas as pd
-from fastapi import Depends, UploadFile
+from fastapi import Depends, UploadFile, status, HTTPException
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 import tables
 from database import get_session
@@ -59,10 +60,25 @@ class DataLoad():
         return
 
     def add_user(self, nickname: str) -> User:
-        user = tables.User(nickname=nickname)
+        user = self.session.query(tables.User).filter_by(
+            nickname=nickname).first()
+        if user is not None:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT)
+        last_user_id = self.session.query(func.max(tables.User.id)).scalar()
+        if last_user_id is None:
+            last_user_id = 0
+        user_id = last_user_id + 1
+        user = tables.User(nickname=nickname, id=user_id)
         self.session.add(user)
         self.session.commit()
         self.session.refresh(user)
+        return user
+
+    def get_user(self, nickname: str) -> User:
+        user = self.session.query(tables.User).filter_by(
+            nickname=nickname).first()
+        if user is None:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
         return user
 
     def add_rating(self, rating: Rating):

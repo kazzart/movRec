@@ -1,10 +1,6 @@
 <app-header></app-header>
 <div class="container">
-  <div class="content">
-    <input type="text" class="search-field" />
-    <p>main-page works!</p>
-    <div class="link">Ссылка</div>
-    <button class="gray-button">Кнопка</button>
-    <button class="green-button">Кнопка</button>
-  </div>
+  <app-auth *ngIf="user.user === undefined"></app-auth>
+  <app-rating *ngIf="user.user !== undefined"></app-rating>
+  <app-data-loader></app-data-loader>
 </div>
