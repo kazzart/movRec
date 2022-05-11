@@ -91,5 +91,8 @@ class DataLoad():
     def get_movies(self, movie_substring: str) -> Movies:
         movies = self.session.query(tables.Movie).filter(
             tables.Movie.title.ilike(f'%{movie_substring}%')).limit(20).all()
-        return Movies(movies=movies)
+        if movies:
+            return Movies(movies=movies)
+        else:
+            return Movies(movies=[])
 # userId,movieId,rating,timestamp,title,genres

@@ -1,1 +1,20 @@
-asd
+<div #searchContainer class="container">
+  <div class="label">Поиск фильма</div>
+  <input
+    [ngModel]="query"
+    (ngModelChange)="queryChanged($event)"
+    type="text"
+    class="regular-input"
+    placeholder="Введите название фильма"
+    [style.border-radius]="dropdownVisible() ? '6px 6px 0 0' : '6px'"
+  />
+  <div *ngIf="dropdownVisible()" class="dropdown">
+    <div
+      *ngFor="let movie of options"
+      (click)="selectMovie(movie)"
+      class="option"
+    >
+      {{ movie.title }}
+    </div>
+  </div>
+</div>

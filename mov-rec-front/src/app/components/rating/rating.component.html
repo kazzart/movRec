@@ -3,9 +3,9 @@
     Здравствуйте,
     <span class="h3">{{ userService.user!.nickname }}</span>
   </div>
-  <app-search-input></app-search-input>
-  <div class="h3">Фильм</div>
-  <div class="wrapper">
+  <app-search-input (movieSelected)="selectMovie($event)"></app-search-input>
+  <div *ngIf="movie != undefined" class="h3">{{ movie.title }}</div>
+  <div *ngIf="movie != undefined" class="wrapper">
     <div class="text">Оценка</div>
     <select>
       <option>1</option>
@@ -15,5 +15,7 @@
       <option>5</option>
     </select>
   </div>
-  <button class="green-button">Получить рекомендации</button>
+  <button *ngIf="movie != undefined" class="green-button">
+    Получить рекомендации
+  </button>
 </div>
