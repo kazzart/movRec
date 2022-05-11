@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, status, UploadFile, File, Response
 from services.data_load import DataLoad
-from models.data_load import User, Rating, Movies, UserCreate
+from models.data_load import User, Rating, Movies, UserCreate, RatingAvg
 
 router = APIRouter(prefix='/data')
 
@@ -27,10 +27,20 @@ def get_user(nickname: str, service: DataLoad = Depends()):
     return service.get_user(nickname)
 
 
-@router.post('/rating', status_code=status.HTTP_204_NO_CONTENT)
+@router.put('/rating', status_code=status.HTTP_204_NO_CONTENT)
 def add_rating(rating: Rating, service: DataLoad = Depends()):
     service.add_rating(rating)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.get('/rating', response_model=Rating, status_code=status.HTTP_200_OK)
+def get_rating(movie_id: int, user_id: int, service: DataLoad = Depends()):
+    return service.get_rating(movie_id, user_id)
+
+
+@router.get('/avg_rating', response_model=RatingAvg, status_code=status.HTTP_200_OK)
+def get_avg_rating(movie_id: int, service: DataLoad = Depends()):
+    return RatingAvg(avg=service.avg_rating(movie_id))
 
 
 @router.get('/movies', response_model=Movies, status_code=status.HTTP_200_OK)

@@ -81,12 +81,30 @@ class DataLoad():
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
         return user
 
+    def get_rating(self, movie_id: int, user_id: int) -> Rating:
+        rating = self.session.query(tables.Rating).filter_by(
+            movie_id=movie_id, user_id=user_id).first()
+        if rating is None:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+        return rating
+
     def add_rating(self, rating: Rating):
-        rating = tables.Rating(user_id=rating.user_id,
-                               movie_id=rating.movie_id, rating=rating.rating)
-        self.session.add(rating)
-        self.session.commit()
-        return
+        try:
+            rating_obj = self.get_rating(rating.movie_id, rating.user_id)
+            rating_obj.rating = rating.rating
+            self.session.commit()
+            return
+        except Exception:
+            rating = tables.Rating(user_id=rating.user_id,
+                                   movie_id=rating.movie_id, rating=rating.rating)
+            self.session.add(rating)
+            self.session.commit()
+            return
+
+    def avg_rating(self, movie_id: int) -> float:
+        avg = self.session.query(func.avg(tables.Rating.rating)).filter_by(
+            movie_id=movie_id).scalar()
+        return round(avg, 1)
 
     def get_movies(self, movie_substring: str) -> Movies:
         movies = self.session.query(tables.Movie).filter(

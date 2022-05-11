@@ -20,6 +20,13 @@ class Rating(BaseModel):
     movie_id: int
     rating: int
 
+    class Config:
+        orm_mode = True
+
+
+class RatingAvg(BaseModel):
+    avg: float
+
 
 class Movie(BaseModel):
     id: int
