@@ -41,4 +41,4 @@ class Recommend():
 
         svd = SVD(n_factors=200, n_epochs=50, lr_all=1e-2, reg_all=1e-1)
         svd.fit(data)
-        # dump.dump('./model2.pickle', algo=svd)
+        dump.dump('./model.pickle', algo=svd)

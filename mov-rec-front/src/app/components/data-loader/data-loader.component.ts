@@ -40,7 +40,7 @@ export class DataLoaderComponent implements OnInit {
     formData.append('file', this.movieFile, this.movieFile.name);
     try {
       await firstValueFrom(
-        this.httpClient.post(environment.apiURL + '/data/movies', formData)
+        this.httpClient.post(environment.apiURL + '/data/movies/', formData)
       );
       this.loader.hide();
       this.messageModal.show('Данные успешно загружены');
@@ -61,7 +61,7 @@ export class DataLoaderComponent implements OnInit {
     formData.append('file', this.ratingFile, this.ratingFile.name);
     try {
       await firstValueFrom(
-        this.httpClient.post(environment.apiURL + '/data/ratings', formData)
+        this.httpClient.post(environment.apiURL + '/data/ratings/', formData)
       );
       this.loader.hide();
       this.messageModal.show('Данные успешно загружены');

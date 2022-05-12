@@ -45,7 +45,7 @@ export class UserService {
     params = params.set('movie_id', movieId);
     params = params.set('user_id', this.user!.id);
     return firstValueFrom(
-      this.httpClient.get<Rating>(environment.apiURL + '/data/rating', {
+      this.httpClient.get<Rating>(environment.apiURL + '/data/rating/', {
         params: params,
       })
     );
@@ -55,7 +55,7 @@ export class UserService {
     let params = new HttpParams();
     params = params.set('movie_id', movieId);
     return firstValueFrom(
-      this.httpClient.get<AvgRating>(environment.apiURL + '/data/avg_rating', {
+      this.httpClient.get<AvgRating>(environment.apiURL + '/data/avg_rating/', {
         params: params,
       })
     );
@@ -68,14 +68,14 @@ export class UserService {
       rating: rating,
     };
     return firstValueFrom(
-      this.httpClient.put<void>(environment.apiURL + '/data/rating', body)
+      this.httpClient.put<void>(environment.apiURL + '/data/rating/', body)
     );
   }
 
   public getRecommendations(): Promise<{ movies: Movie[] }> {
     return firstValueFrom(
       this.httpClient.get<{ movies: Movie[] }>(
-        environment.apiURL + `/recommendation/${this.user!.id}`
+        environment.apiURL + `/recommendation/${this.user!.id}/`
       )
     );
   }

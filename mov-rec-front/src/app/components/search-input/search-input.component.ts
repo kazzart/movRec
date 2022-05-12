@@ -43,7 +43,7 @@ export class SearchInputComponent implements OnInit {
     this.options = (
       await firstValueFrom(
         this.httpClient.get<{ movies: Movie[] }>(
-          environment.apiURL + '/data/movies',
+          environment.apiURL + '/data/movies/',
           { params: params }
         )
       )

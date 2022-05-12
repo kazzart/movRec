@@ -8,6 +8,7 @@ services:
       DATABASE_URL: "postgresql://postgres:password@database:5432/MovRec"
       DEVELOPMENT_MODE: 1
       SERVER_PORT: 8000
+      ROOT_PATH: "/api"
     depends_on:
       - database
     restart: on-failure
