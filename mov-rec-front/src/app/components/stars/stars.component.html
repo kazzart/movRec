@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="star-source">
+    <svg>
+      <linearGradient
+        x1="50%"
+        y1="5.41294643%"
+        x2="87.5527344%"
+        y2="65.4921875%"
+        id="grad"
+      >
+        <stop stop-color="#f7e669" offset="0%"></stop>
+        <stop stop-color="#f8e65e" offset="60%"></stop>
+        <stop stop-color="#f1e05a" offset="100%"></stop>
+      </linearGradient>
+      <symbol id="star" viewBox="153 89 106 108">
+        <polygon
+          id="star-shape"
+          stroke="url(#grad)"
+          stroke-width="5"
+          fill="currentColor"
+          points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085"
+        ></polygon>
+      </symbol>
+    </svg>
+  </div>
+
+  <div class="star-container">
+    <input
+      type="radio"
+      name="star"
+      id="five"
+      [checked]="rating === 5"
+      (change)="setRating(5)"
+    />
+    <label for="five">
+      <svg class="star">
+        <use xlink:href="#star" />
+      </svg>
+    </label>
+    <input
+      type="radio"
+      name="star"
+      id="four"
+      [checked]="rating === 4"
+      (change)="setRating(4)"
+    />
+    <label for="four">
+      <svg class="star">
+        <use xlink:href="#star" />
+      </svg>
+    </label>
+    <input
+      type="radio"
+      name="star"
+      id="three"
+      [checked]="rating === 3"
+      (change)="setRating(3)"
+    />
+    <label for="three">
+      <svg class="star">
+        <use xlink:href="#star" />
+      </svg>
+    </label>
+    <input
+      type="radio"
+      name="star"
+      id="two"
+      [checked]="rating === 2"
+      (change)="setRating(2)"
+    />
+    <label for="two">
+      <svg class="star">
+        <use xlink:href="#star" />
+      </svg>
+    </label>
+    <input
+      type="radio"
+      name="star"
+      id="one"
+      [checked]="rating === 1"
+      (change)="setRating(1)"
+    />
+    <label for="one">
+      <svg class="star">
+        <use xlink:href="#star" />
+      </svg>
+    </label>
+  </div>
+  <div class="mean-rating">{{ mean }}</div>
+</div>

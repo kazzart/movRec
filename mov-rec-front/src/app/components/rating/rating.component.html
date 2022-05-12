@@ -5,17 +5,13 @@
   </div>
   <app-search-input (movieSelected)="selectMovie($event)"></app-search-input>
   <div *ngIf="movie != undefined" class="h3">{{ movie.title }}</div>
-  <div *ngIf="movie != undefined" class="wrapper">
-    <div class="text">Оценка</div>
-    <select>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <button *ngIf="movie != undefined" class="green-button">
+  <app-stars
+    [mean]="avgRating"
+    [rating]="rating"
+    (ratingChange)="changeRating($event)"
+    *ngIf="movie != undefined"
+  ></app-stars>
+  <button (click)="getRecommendations()" class="green-button">
     Получить рекомендации
   </button>
 </div>

@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 import tables
 from database import get_session
 from models.recommend import Recommendations
-from surprise import dump, Reader, Dataset
+from surprise import dump, Reader, Dataset, SVD
 
 
 class Recommend():
@@ -28,3 +28,17 @@ class Recommend():
         movies = self.session.query(tables.Movie).filter(
             tables.Movie.id.in_(recommended_movie_ids)).all()
         return Recommendations(movies=movies)
+
+    def train_model(self):
+        data = self.session.query(
+            tables.Rating.user_id, tables.Rating.movie_id, tables.Rating.rating).all()
+        data = pd.DataFrame(data, columns=['userId', 'movieId', 'rating'])
+        print(data.head())
+
+        reader = Reader()
+        data = Dataset.load_from_df(data, reader=reader)
+        data = data.build_full_trainset()
+
+        svd = SVD(n_factors=200, n_epochs=50, lr_all=1e-2, reg_all=1e-1)
+        svd.fit(data)
+        # dump.dump('./model2.pickle', algo=svd)

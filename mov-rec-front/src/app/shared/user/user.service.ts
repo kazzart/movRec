@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { User } from 'src/app/interfaces/interface';
+import { AvgRating, Movie, Rating, User } from 'src/app/interfaces/interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -38,5 +38,45 @@ export class UserService {
     } catch (error) {
       return Promise.reject(error);
     }
+  }
+
+  public getRating(movieId: number): Promise<Rating> {
+    let params = new HttpParams();
+    params = params.set('movie_id', movieId);
+    params = params.set('user_id', this.user!.id);
+    return firstValueFrom(
+      this.httpClient.get<Rating>(environment.apiURL + '/data/rating', {
+        params: params,
+      })
+    );
+  }
+
+  public getMeanRating(movieId: number): Promise<AvgRating> {
+    let params = new HttpParams();
+    params = params.set('movie_id', movieId);
+    return firstValueFrom(
+      this.httpClient.get<AvgRating>(environment.apiURL + '/data/avg_rating', {
+        params: params,
+      })
+    );
+  }
+
+  public putRating(movieId: number, rating: number): Promise<void> {
+    let body: Rating = {
+      movie_id: movieId,
+      user_id: this.user!.id,
+      rating: rating,
+    };
+    return firstValueFrom(
+      this.httpClient.put<void>(environment.apiURL + '/data/rating', body)
+    );
+  }
+
+  public getRecommendations(): Promise<{ movies: Movie[] }> {
+    return firstValueFrom(
+      this.httpClient.get<{ movies: Movie[] }>(
+        environment.apiURL + `/recommendation/${this.user!.id}`
+      )
+    );
   }
 }

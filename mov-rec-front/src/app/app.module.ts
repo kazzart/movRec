@@ -13,6 +13,8 @@ import { RatingComponent } from './components/rating/rating.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { MessageModalComponent } from './components/message-modal/message-modal.component';
 import { DropZoneComponent } from './components/drop-zone/drop-zone.component';
+import { StarsComponent } from './components/stars/stars.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { DropZoneComponent } from './components/drop-zone/drop-zone.component';
     SearchInputComponent,
     MessageModalComponent,
     DropZoneComponent,
+    StarsComponent,
+    LoaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

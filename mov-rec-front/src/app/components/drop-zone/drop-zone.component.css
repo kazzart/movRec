@@ -8,8 +8,8 @@
   justify-items: center;
   position: relative;
   width: 100%;
-  background: #ddf4ff;
-  border: 1px dashed #a6d9ff;
+  background: rgba(231, 244, 255, 0.6);
+  border: 1px dashed rgb(183, 217, 255);
   box-sizing: border-box;
   border-radius: 6px;
   padding: 15px;
@@ -30,8 +30,10 @@ input {
 
 .image {
   width: 20px;
+  opacity: 0.7;
 }
 
 .text {
   color: rgb(36, 41, 47);
+  opacity: 0.7;
 }

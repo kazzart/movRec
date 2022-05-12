@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { LoaderService } from 'src/app/shared/loader/loader.service';
 import { MessageModalService } from 'src/app/shared/message-modal/message-modal.service';
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +16,8 @@ export class DataLoaderComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private messageModal: MessageModalService
+    private messageModal: MessageModalService,
+    private loader: LoaderService
   ) {}
 
   ngOnInit(): void {}
@@ -33,14 +35,17 @@ export class DataLoaderComponent implements OnInit {
       this.messageModal.show('Файл не выбран');
       return;
     }
+    this.loader.show();
     let formData: FormData = new FormData();
     formData.append('file', this.movieFile, this.movieFile.name);
     try {
       await firstValueFrom(
         this.httpClient.post(environment.apiURL + '/data/movies', formData)
       );
+      this.loader.hide();
       this.messageModal.show('Данные успешно загружены');
     } catch (error) {
+      this.loader.hide();
       this.messageModal.show('Не удалось загрузить данные');
       console.error(error);
     }
@@ -51,14 +56,17 @@ export class DataLoaderComponent implements OnInit {
       this.messageModal.show('Файл не выбран');
       return;
     }
+    this.loader.show();
     let formData: FormData = new FormData();
     formData.append('file', this.ratingFile, this.ratingFile.name);
     try {
       await firstValueFrom(
         this.httpClient.post(environment.apiURL + '/data/ratings', formData)
       );
+      this.loader.hide();
       this.messageModal.show('Данные успешно загружены');
     } catch (error) {
+      this.loader.hide();
       this.messageModal.show('Не удалось загрузить данные');
       console.error(error);
     }
