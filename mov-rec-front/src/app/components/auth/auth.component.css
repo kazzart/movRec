@@ -1,7 +1,16 @@
+.content {
+  min-width: 584.797px;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   row-gap: 10px;
+}
+
+.regular-input {
+  width: 100%;
 }
 
 .label {

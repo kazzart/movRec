@@ -19,7 +19,7 @@ class Recommend():
             tables.Movie.id.notin_(rated_movies)).all()
         movie_ids = [id for id, in movie_ids]
         _, model = dump.load('./model.pickle')
-        ratings = [(model.predict(str(user_id), str(movie_id)).est, movie_id)
+        ratings = [(model.predict(user_id, movie_id).est, movie_id)
                    for movie_id in movie_ids]
         ratings.sort(key=lambda x: x[0], reverse=True)
         ratings = ratings[:10]

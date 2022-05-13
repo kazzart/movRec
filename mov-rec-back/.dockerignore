@@ -113,3 +113,4 @@ explore-requirements.txt
 /.venv37
 /.venv
 /venv37
+model.pickle
